@@ -1,6 +1,7 @@
 package com.vesa.wazeapi.dto;
 
 public class UserDto {
+
     private String fcmId;
 
     private String firstname;

@@ -23,7 +23,7 @@ public class BaseController<T> implements IController<T> {
         return null;
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
+//    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
     @Override
     public T post(ArrayList<T> objects) {
         return null;
@@ -47,7 +47,7 @@ public class BaseController<T> implements IController<T> {
         return null;
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.PUT, produces = "application/json")
+//    @RequestMapping(value = "/",method = RequestMethod.PUT, produces = "application/json")
     @Override
     public T update(ArrayList<T> objects) {
         return null;

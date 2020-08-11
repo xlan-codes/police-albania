@@ -9,18 +9,18 @@ import java.util.Date;
 public class BaseEntity {
 
     @Id
-    private long id;
+    private String id;
 
     @CreatedDate
     private Date created;
 
     private Date modified;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
