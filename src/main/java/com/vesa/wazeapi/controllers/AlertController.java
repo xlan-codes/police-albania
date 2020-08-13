@@ -5,6 +5,8 @@ import com.vesa.wazeapi.services.AlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class AlertController {
 
@@ -12,8 +14,9 @@ public class AlertController {
     AlertService alertService;
 
     @RequestMapping(value = "/alert", method = RequestMethod.GET, produces = "application/json")
-    public AlertDto get() {
-        return null;
+    public List<AlertDto> get() {
+        List<AlertDto> alertDtoList = this.alertService.getAlert();
+        return alertDtoList;
     }
 
     @RequestMapping(value = "/alert", method = RequestMethod.POST, produces = "application/json")

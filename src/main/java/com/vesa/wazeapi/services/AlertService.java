@@ -36,9 +36,6 @@ public class AlertService extends BaseService {
 
     private AlertEntity convertToEntity(AlertDto alertDto) {
         AlertEntity alertEntity = modelMapper.map(alertDto, AlertEntity.class);
-//        alertDto.s.setSubmissionDate(alertEntity.getId(),
-//                alertEntity.addedDate(), alertEntity.formattedAddress(), alertEntity.icon(),
-//                alertEntity.lat(), alertEntity.lng(), alertEntity.name(), alertEntity.rating(), alertEntity.getId(), alertEntity.type(), alertEntity.vicinity());
         return alertEntity;
     }
 

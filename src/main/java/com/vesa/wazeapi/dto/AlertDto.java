@@ -2,8 +2,10 @@ package com.vesa.wazeapi.dto;
 
 import java.io.Serializable;
 
-public class AlertDto extends BaseDto{
+public class AlertDto extends BaseDto {
 
+    public int like;
+    public int dislike;
     public float rating;
     public long addedDate;
     public double lat;
@@ -87,4 +89,19 @@ public class AlertDto extends BaseDto{
         this.vicinity = str;
     }
 
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
+    }
 }

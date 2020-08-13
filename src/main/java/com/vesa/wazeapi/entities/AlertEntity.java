@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("alert_entities")
 public class AlertEntity extends BaseEntity {
 
+    public int like;
+    public int dislike;
     public float rating;
     public long addedDate;
     public double lat;
@@ -85,5 +87,21 @@ public class AlertEntity extends BaseEntity {
 
     public void setVicinity(String str) {
         this.vicinity = str;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
     }
 }
