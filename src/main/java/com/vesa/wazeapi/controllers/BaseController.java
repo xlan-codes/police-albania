@@ -10,25 +10,25 @@ public class BaseController<T> implements IController<T> {
 
 
     @Override
-    @RequestMapping(value = "/",method = RequestMethod.GET,  produces = "application/json")
-    public T get() {
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET,  produces = "application/json")
+    public T get(@PathVariable("id") String id) {
         return null;
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
     @Override
+    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
     public T post(T object) {
         return null;
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.PUT,  produces = "application/json")
     @Override
+    @RequestMapping(value = "/",method = RequestMethod.PUT,  produces = "application/json")
     public T put(T object) {
         return null;
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @Override
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") String object) {
         return false;
     }
