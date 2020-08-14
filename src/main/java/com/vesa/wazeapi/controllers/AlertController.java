@@ -25,34 +25,10 @@ public class AlertController {
         return alertDto;
     }
 
-    //    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
-
-//    public AlertDto post(ArrayList<AlertDto> objects) {
-//        return null;
-//    }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-
-//    public AlertDto put(ArrayList<AlertDto> objects) {
-//        return null;
-//    }
-//
-//    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-//
-//    public AlertDto put(AlertDto object) {
-//        return null;
-//    }
-
     @RequestMapping(value = "/alert", method = RequestMethod.PUT, produces = "application/json")
     public AlertDto update(@RequestBody AlertDto object) {
         return null;
     }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.PUT, produces = "application/json")
-
-//    public AlertDto update(ArrayList<AlertDto> objects) {
-//        return null;
-//    }
 
     @RequestMapping(value = "/alert/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") String object) {

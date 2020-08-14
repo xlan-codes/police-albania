@@ -14,8 +14,8 @@ public class TrafficJamController implements IController<TrafficJamDto> {
 
 
     @Override
-    @RequestMapping(value = "/traffic-jam", method = RequestMethod.GET, produces = "application/json")
-    public TrafficJamDto get() {
+    @RequestMapping(value = "/traffic-jam/{id}", method = RequestMethod.GET, produces = "application/json")
+    public TrafficJamDto get(@PathVariable("id") String id) {
         return null;
     }
 
@@ -25,33 +25,9 @@ public class TrafficJamController implements IController<TrafficJamDto> {
         return null;
     }
 
-    //    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
-    @Override
-    public TrafficJamDto post(ArrayList<TrafficJamDto> objects) {
-        return null;
-    }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-    @Override
-    public TrafficJamDto put(ArrayList<TrafficJamDto> objects) {
-        return null;
-    }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-    @Override
-    public TrafficJamDto put(TrafficJamDto object) {
-        return null;
-    }
-
     @RequestMapping(value = "/traffic-jam", method = RequestMethod.PUT, produces = "application/json")
     @Override
-    public TrafficJamDto update(TrafficJamDto object) {
-        return null;
-    }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.PUT, produces = "application/json")
-    @Override
-    public TrafficJamDto update(ArrayList<TrafficJamDto> objects) {
+    public TrafficJamDto put(TrafficJamDto object) {
         return null;
     }
 

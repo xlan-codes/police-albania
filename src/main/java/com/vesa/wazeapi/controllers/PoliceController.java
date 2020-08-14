@@ -10,8 +10,13 @@ import java.util.ArrayList;
 public class PoliceController  {
 
     
-    @RequestMapping(value = "/police", method = RequestMethod.GET, produces = "application/json")
-    public PoliceDto getPolice() {
+    @RequestMapping(value = "/police/{id}", method = RequestMethod.GET, produces = "application/json")
+    public PoliceDto get(@PathVariable("id") String id) {
+        return null;
+    }
+
+    @RequestMapping(value = "/police/get-all", method = RequestMethod.GET, produces = "application/json")
+    public PoliceDto getAll() {
         return null;
     }
 
@@ -20,34 +25,10 @@ public class PoliceController  {
         return null;
     }
 
-    //    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
-    
-//    public PoliceDto post(ArrayList<PoliceDto> objects) {
-//        return null;
-//    }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-    
-//    public PoliceDto put(ArrayList<PoliceDto> objects) {
-//        return null;
-//    }
-//
-//    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-//
-//    public PoliceDto put(PoliceDto object) {
-//        return null;
-//    }
-
     @RequestMapping(value = "/police", method = RequestMethod.PUT, produces = "application/json")
-    public PoliceDto update(@RequestBody PoliceDto object) {
+    public PoliceDto put(@RequestBody PoliceDto object) {
         return null;
     }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.PUT, produces = "application/json")
-    
-//    public PoliceDto update(ArrayList<PoliceDto> objects) {
-//        return null;
-//    }
 
     @RequestMapping(value = "/police/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") String object) {

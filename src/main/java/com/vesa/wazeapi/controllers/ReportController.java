@@ -13,8 +13,8 @@ public class ReportController
 
 
     
-    @RequestMapping(value = "/report", method = RequestMethod.GET, produces = "application/json")
-    public ReportDto get() {
+    @RequestMapping(value = "/report/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ReportDto get(@PathVariable("id") String id) {
         return null;
     }
 
@@ -22,35 +22,11 @@ public class ReportController
     public ReportDto post(@RequestBody ReportDto object) {
         return object;
     }
-//
-//    //    @RequestMapping(value = "/",method = RequestMethod.POST,  produces = "application/json")
-//
-//    public ReportDto post(ArrayList<ReportDto> objects) {
-//        return null;
-//    }
-//
-//    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-//
-//    public ReportDto put(ArrayList<ReportDto> objects) {
-//        return null;
-//    }
-//
-//    //    @RequestMapping(value = "/",method = RequestMethod.POST)
-//
-//    public ReportDto put(ReportDto object) {
-//        return null;
-//    }
 
     @RequestMapping(value = "/report", method = RequestMethod.PUT, produces = "application/json")
-    public ReportDto update(@RequestBody ReportDto object) {
+    public ReportDto put(@RequestBody ReportDto object) {
         return null;
     }
-
-    //    @RequestMapping(value = "/",method = RequestMethod.PUT, produces = "application/json")
-//
-//    public ReportDto update(ArrayList<ReportDto> objects) {
-//        return null;
-//    }
 
     @RequestMapping(value = "/report/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") String object) {
