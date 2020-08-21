@@ -2,6 +2,7 @@ package com.vesa.wazeapi;
 
 import com.vesa.wazeapi.repos.AlertRepository;
 import com.vesa.wazeapi.services.AlertService;
+import com.vesa.wazeapi.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +33,12 @@ public class ConfigClass extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder getPasswordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+
+    @Bean
+    public UserService getUserService(){
+        return new UserService();
     }
 
 

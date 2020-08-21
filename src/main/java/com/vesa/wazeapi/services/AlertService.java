@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,21 @@ public class AlertService extends BaseService {
         return this.repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    public AlertDto findOne(String id) {
+        AlertEntity alertEntity = this.repository.findById(id).get();
+        return alertEntity == null ? null : this.convertToDto(alertEntity);
+    }
+
+    public List<AlertDto> getLatestAlerts(LocalDateTime localDateTime) {
+        return this.repository.findAlertsGraterThan(localDateTime).stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
     public AlertDto save(AlertDto alertDto) {
+        AlertEntity alertEntity = this.repository.save(convertToEntity(alertDto));
+        return convertToDto(alertEntity);
+    }
+
+    public AlertDto update(AlertDto alertDto) {
         AlertEntity alertEntity = this.repository.save(convertToEntity(alertDto));
         return convertToDto(alertEntity);
     }
