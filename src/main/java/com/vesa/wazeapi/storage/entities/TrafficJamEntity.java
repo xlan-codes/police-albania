@@ -1,7 +1,7 @@
-package com.vesa.wazeapi.entities;
+package com.vesa.wazeapi.storage.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "trafficjam")
+@Document("trafficjam")
 public class TrafficJamEntity extends BaseAlertEntity {
 }

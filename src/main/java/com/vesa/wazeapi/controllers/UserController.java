@@ -5,10 +5,7 @@ import com.vesa.wazeapi.dto.UserDto;
 import com.vesa.wazeapi.interfaces.IController;
 import com.vesa.wazeapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,12 +28,12 @@ public class UserController implements IController<UserDto>
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
-    public UserDto post(UserDto object) {
+    public UserDto post(@RequestBody UserDto object) {
         return this.userService.save(object);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json")
-    public UserDto put(UserDto object) {
+    public UserDto put(@RequestBody UserDto object) {
         return this.userService.save(object);
     }
 

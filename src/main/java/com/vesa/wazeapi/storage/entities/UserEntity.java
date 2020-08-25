@@ -1,8 +1,8 @@
-package com.vesa.wazeapi.entities;
+package com.vesa.wazeapi.storage.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "users")
+@Document("users")
 public class UserEntity extends BaseEntity {
 
     private String fcmId;

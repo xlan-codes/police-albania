@@ -12,6 +12,7 @@ public class AlertDto extends BaseDto {
     public double lng;
     public String name;
     public String type;
+    public String parentType;
     public String vicinity;
     public String formattedAddress;
     public String icon;
@@ -103,5 +104,14 @@ public class AlertDto extends BaseDto {
 
     public void setDislike(int dislike) {
         this.dislike = dislike;
+    }
+
+
+    public String getParentType() {
+        return parentType;
+    }
+
+    public void setParentType(String parentType) {
+        this.parentType = parentType;
     }
 }

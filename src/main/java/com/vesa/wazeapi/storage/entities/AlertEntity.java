@@ -1,4 +1,4 @@
-package com.vesa.wazeapi.entities;
+package com.vesa.wazeapi.storage.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,6 +16,16 @@ public class AlertEntity extends BaseEntity {
     public String vicinity;
     public String formattedAddress;
     public String icon;
+    public String parentType;
+
+
+    public String getParentType() {
+        return parentType;
+    }
+
+    public void setParentType(String parentType) {
+        this.parentType = parentType;
+    }
 
     public long getAddedDate() {
         return this.addedDate;

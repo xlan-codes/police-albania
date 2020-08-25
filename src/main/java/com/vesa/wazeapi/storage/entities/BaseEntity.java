@@ -1,11 +1,9 @@
-package com.vesa.wazeapi.entities;
+package com.vesa.wazeapi.storage.entities;
 
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.domain.Persistable;
 
 
 //@Document(collation = "base")

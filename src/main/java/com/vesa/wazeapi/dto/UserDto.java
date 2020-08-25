@@ -1,6 +1,6 @@
 package com.vesa.wazeapi.dto;
 
-public class UserDto {
+public class UserDto extends BaseDto {
 
     private String fcmId;
 

@@ -1,18 +1,23 @@
 package com.vesa.wazeapi.services;
 
 import com.vesa.wazeapi.dto.UserDto;
-import com.vesa.wazeapi.entities.UserEntity;
+import com.vesa.wazeapi.storage.entities.UserEntity;
 import com.vesa.wazeapi.interfaces.IService;
-import com.vesa.wazeapi.repos.UserRepository;
+import com.vesa.wazeapi.storage.repos.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService  implements IService {
+public class UserService  implements IService, UserDetailsService {
 
     @Autowired
     UserRepository repository;
@@ -42,9 +47,13 @@ public class UserService  implements IService {
     }
 
     public List<UserDto> getAll() {
-       List<UserEntity> users = this.repository.findAll();
-
        return this.repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+
+    public UserDetails getUserDetails(String email) {
+        UserEntity user = this.repository.findByEmail(email);
+       return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
     }
 
 
@@ -56,5 +65,11 @@ public class UserService  implements IService {
     private UserEntity convertToEntity(UserDto userDto) {
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         return userEntity;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserEntity user = repository.findByEmail(username);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
     }
 }

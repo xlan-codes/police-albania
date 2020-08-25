@@ -1,13 +1,12 @@
 package com.vesa.wazeapi.services;
 
 import com.vesa.wazeapi.dto.AlertDto;
-import com.vesa.wazeapi.entities.AlertEntity;
-import com.vesa.wazeapi.repos.AlertRepository;
+import com.vesa.wazeapi.storage.entities.AlertEntity;
+import com.vesa.wazeapi.storage.repos.AlertRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +22,10 @@ public class AlertService extends BaseService {
 
     public List<AlertDto> getAlert() {
         return this.repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+    public List<AlertDto> findByParentType(String type) {
+        return this.repository.findByParentType(type).stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     public AlertDto findOne(String id) {

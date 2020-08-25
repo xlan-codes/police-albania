@@ -1,6 +1,6 @@
-package com.vesa.wazeapi.repos;
+package com.vesa.wazeapi.storage.repos;
 
-import com.vesa.wazeapi.entities.ReportEntity;
+import com.vesa.wazeapi.storage.entities.ReportEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ReportRepository extends MongoRepository<ReportEntity, String> {

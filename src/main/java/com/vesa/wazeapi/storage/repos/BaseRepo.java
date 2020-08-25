@@ -1,4 +1,4 @@
-package com.vesa.wazeapi.repos;
+package com.vesa.wazeapi.storage.repos;
 
 import com.vesa.wazeapi.interfaces.IRepository;
 

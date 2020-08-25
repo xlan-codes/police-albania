@@ -1,6 +1,6 @@
-package com.vesa.wazeapi.repos;
+package com.vesa.wazeapi.storage.repos;
 
-import com.vesa.wazeapi.entities.AlertEntity;
+import com.vesa.wazeapi.storage.entities.AlertEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -12,4 +12,7 @@ public interface AlertRepository  extends MongoRepository<AlertEntity, String> {
     @Query("{'created' : { '$gte' : ?0 }}")
     List<AlertEntity> findAlertsGraterThan(LocalDateTime created);
 
+    List<AlertEntity> findByParentType(String parentType);
+
 }
+

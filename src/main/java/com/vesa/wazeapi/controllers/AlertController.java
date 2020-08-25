@@ -37,6 +37,12 @@ public class AlertController {
         return alertDtoList;
     }
 
+    @RequestMapping(value = "/getAlertByType", method = RequestMethod.GET, produces = "application/json")
+    public List<AlertDto> getAlertByType(@RequestParam("type") String type) {
+        List<AlertDto> alertDtoList = this.alertService.findByParentType(type);
+        return alertDtoList;
+    }
+
     @RequestMapping(value = "/alert", method = RequestMethod.POST, produces = "application/json")
     public AlertDto post(@RequestBody AlertDto object) {
         AlertDto alertDto = this.alertService.save(object);

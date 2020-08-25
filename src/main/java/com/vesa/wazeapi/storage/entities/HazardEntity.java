@@ -1,7 +1,7 @@
-package com.vesa.wazeapi.entities;
+package com.vesa.wazeapi.storage.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "hazard")
+@Document("hazard")
 public class HazardEntity {
 }
