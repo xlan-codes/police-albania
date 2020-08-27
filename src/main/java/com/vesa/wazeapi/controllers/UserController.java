@@ -14,30 +14,32 @@ import java.util.List;
 public class UserController implements IController<UserDto>
 {
 
+    public static final String BASE_USER_CONTROLLER = "/user";
+
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = UserController.BASE_USER_CONTROLLER, method = RequestMethod.GET, produces = "application/json")
     public List<UserDto> getAll() {
         return this.userService.getAll();
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = UserController.BASE_USER_CONTROLLER + "/{id}", method = RequestMethod.GET, produces = "application/json")
     public UserDto get(@PathVariable("id") String id){
         return this.userService.get(id);
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = UserController.BASE_USER_CONTROLLER, method = RequestMethod.POST, produces = "application/json")
     public UserDto post(@RequestBody UserDto object) {
         return this.userService.save(object);
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = UserController.BASE_USER_CONTROLLER, method = RequestMethod.PUT, produces = "application/json")
     public UserDto put(@RequestBody UserDto object) {
         return this.userService.save(object);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = UserController.BASE_USER_CONTROLLER + "/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") String object) {
         return false;
     }

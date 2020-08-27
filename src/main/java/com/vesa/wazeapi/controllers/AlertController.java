@@ -9,35 +9,35 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 @RestController
 public class AlertController {
 
+    public static final String BASE_ALERT_CONTROLLER = "/alert";
+
     @Autowired
     AlertService alertService;
 
-    @RequestMapping(value = "/alert", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER, method = RequestMethod.GET, produces = "application/json")
     public List<AlertDto> get() {
         List<AlertDto> alertDtoList = this.alertService.getAlert();
         return alertDtoList;
     }
 
-    @RequestMapping(value = "/alert/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/{id}", method = RequestMethod.GET, produces = "application/json")
     public AlertDto getOne(@PathVariable("id") String id) {
         AlertDto alertDtoList = this.alertService.findOne(id);
         return alertDtoList;
     }
 
-    @RequestMapping(value = "/getLatestAlertsByDate", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/getLatestAlertsByDate", method = RequestMethod.GET, produces = "application/json")
     public List<AlertDto> getLatestAlerts(@RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime) {
         List<AlertDto> alertDtoList = this.alertService.getLatestAlerts(localDateTime);
         return alertDtoList;
     }
 
-    @RequestMapping(value = "/getAlertByType", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/getAlertByType", method = RequestMethod.GET, produces = "application/json")
     public List<AlertDto> getAlertByType(@RequestParam("type") String type) {
         List<AlertDto> alertDtoList = this.alertService.findByParentType(type);
         return alertDtoList;
@@ -50,7 +50,7 @@ public class AlertController {
     }
 
 
-    @RequestMapping(value = "/alert", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER, method = RequestMethod.PUT, produces = "application/json")
     public AlertDto update(@RequestBody AlertDto object) {
         AlertDto obj =  this.alertService.findOne(object.getId());
         if(obj == null)

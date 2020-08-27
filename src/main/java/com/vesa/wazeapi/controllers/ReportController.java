@@ -10,25 +10,24 @@ import java.util.ArrayList;
 @RestController
 public class ReportController
 {
-
-
+    public static final String BASE_REPORT_CONTROLLER = "/report";
     
-    @RequestMapping(value = "/report/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = ReportController.BASE_REPORT_CONTROLLER + "/{id}", method = RequestMethod.GET, produces = "application/json")
     public ReportDto get(@PathVariable("id") String id) {
         return null;
     }
 
-    @RequestMapping(value = "/report", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = ReportController.BASE_REPORT_CONTROLLER, method = RequestMethod.POST, produces = "application/json")
     public ReportDto post(@RequestBody ReportDto object) {
         return object;
     }
 
-    @RequestMapping(value = "/report", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = ReportController.BASE_REPORT_CONTROLLER, method = RequestMethod.PUT, produces = "application/json")
     public ReportDto put(@RequestBody ReportDto object) {
         return null;
     }
 
-    @RequestMapping(value = "/report/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = ReportController.BASE_REPORT_CONTROLLER + "/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") String object) {
         return false;
     }

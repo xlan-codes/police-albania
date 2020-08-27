@@ -20,6 +20,8 @@ import java.util.Map;
 @CrossOrigin
 public class AuthController {
 
+    public static final String BASE_BASE_CONTROLLER = "/auth";
+
     @Autowired
     private JwtUtil jwtUtil;
 
@@ -27,7 +29,7 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
 
-    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    @RequestMapping(value = AuthController.BASE_BASE_CONTROLLER, method = RequestMethod.POST)
     public ResponseEntity auth(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
 
@@ -43,7 +45,7 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @RequestMapping(value = "/refresh-token", method = RequestMethod.GET)
+    @RequestMapping(value = AuthController.BASE_BASE_CONTROLLER + "/refresh-token", method = RequestMethod.GET)
     public ResponseEntity<?> refreshToken(HttpServletRequest request) throws Exception {
         String t[] = request.getHeader("Authorization").split(" ");
         DefaultClaims claims = (DefaultClaims) jwtUtil.extractAllClaims(t[1]);
