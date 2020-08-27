@@ -23,6 +23,8 @@ public class JwtUtil {
     @Value("${jwt.secret}")
     private String secret;
 
+    public static final Date TOKEN_LIFE= new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
+
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -35,7 +37,8 @@ public class JwtUtil {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
-    private Claims extractAllClaims(String token) {
+
+    public Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
@@ -51,8 +54,17 @@ public class JwtUtil {
     private String createToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .setExpiration(TOKEN_LIFE)
                 .signWith(SignatureAlgorithm.HS256, secret).compact();
+    }
+
+
+    public String doGenerateRefreshToken(Map<String, Object> claims, String subject) {
+
+        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(TOKEN_LIFE)
+                .signWith(SignatureAlgorithm.HS256, secret).compact();
+
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {

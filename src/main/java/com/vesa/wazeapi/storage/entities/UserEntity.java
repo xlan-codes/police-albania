@@ -7,15 +7,23 @@ public class UserEntity extends BaseEntity {
 
     private String fcmId;
 
-    private String firstname;
+    private String fullName;
 
-    private String lastname;
+    private String address;
 
     private String phoneNumber;
 
     private String email;
 
     private String password;
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getFcmId() {
         return fcmId;
@@ -25,20 +33,12 @@ public class UserEntity extends BaseEntity {
         this.fcmId = fcmId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhoneNumber() {
