@@ -29,6 +29,11 @@ public class UserController implements IController<UserDto>
         return this.userService.get(id);
     }
 
+    @RequestMapping(value = UserController.BASE_USER_CONTROLLER + "/user-detail/{email}", method = RequestMethod.GET, produces = "application/json")
+    public UserDto getUserByEmail(@PathVariable("email") String email){
+        return this.userService.getUserDetailsByEmail(email);
+    }
+
     @RequestMapping(value = UserController.BASE_USER_CONTROLLER, method = RequestMethod.POST, produces = "application/json")
     public UserDto post(@RequestBody UserDto object) {
         return this.userService.save(object);

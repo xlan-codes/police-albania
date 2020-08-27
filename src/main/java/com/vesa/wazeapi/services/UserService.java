@@ -52,8 +52,13 @@ public class UserService  implements IService, UserDetailsService {
 
 
     public UserDetails getUserDetails(String email) {
-        UserEntity user = this.repository.findByEmail(email);
-       return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
+        Optional<UserEntity> user = this.repository.findByEmail(email);
+       return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), new ArrayList<>());
+    }
+
+    public UserDto getUserDetailsByEmail(String email) {
+        Optional<UserEntity> user = this.repository.findByEmail(email);
+       return  user.isPresent() ? this.convertToDto(user.get()) : null;
     }
 
 
@@ -69,7 +74,7 @@ public class UserService  implements IService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = repository.findByEmail(username);
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
+        Optional<UserEntity> user = repository.findByEmail(username);
+        return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), new ArrayList<>());
     }
 }
