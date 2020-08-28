@@ -28,6 +28,10 @@ public class AlertService extends BaseService {
         return this.repository.findByParentType(type).stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    public List<AlertDto> findByParentTypeAndDate(String type, LocalDateTime localDateTime) {
+        return this.repository.findByParentType(type).stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
     public AlertDto findOne(String id) {
         AlertEntity alertEntity = this.repository.findById(id).get();
         return alertEntity == null ? null : this.convertToDto(alertEntity);

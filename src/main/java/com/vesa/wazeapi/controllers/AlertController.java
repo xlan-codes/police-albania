@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AlertController {
@@ -37,9 +38,11 @@ public class AlertController {
         return alertDtoList;
     }
 
-    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/getAlertByType", method = RequestMethod.GET, produces = "application/json")
-    public List<AlertDto> getAlertByType(@RequestParam("type") String type) {
-        List<AlertDto> alertDtoList = this.alertService.findByParentType(type);
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/getAlertByTypeAndDate", method = RequestMethod.GET, produces = "application/json")
+    public List<AlertDto> getAlertByType(@RequestParam("type") String type, @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> localDateTime) {
+
+        LocalDateTime time = localDateTime.isPresent() ? localDateTime.get():null;
+        List<AlertDto> alertDtoList = this.alertService.findByParentTypeAndDate(type, time);
         return alertDtoList;
     }
 

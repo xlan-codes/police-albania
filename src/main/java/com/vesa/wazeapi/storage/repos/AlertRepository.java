@@ -14,5 +14,8 @@ public interface AlertRepository  extends MongoRepository<AlertEntity, String> {
 
     List<AlertEntity> findByParentType(String parentType);
 
+    @Query("{'created' : { '$gte' : ?0 }}")
+    List<AlertEntity> findByParentTypeDateTime(String parentType, LocalDateTime created);
+
 }
 
