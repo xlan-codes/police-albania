@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AlertService extends BaseService {
+public class AlertService{
 
     @Autowired
     AlertRepository repository;
@@ -23,6 +23,10 @@ public class AlertService extends BaseService {
     public List<AlertDto> getAlert() {
         return this.repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
+
+//    public List<AlertDto> find(Object ...filter) {
+//        return this.repository.findByFilter(filter).stream().map(this::convertToDto).collect(Collectors.toList());
+//    }
 
     public List<AlertDto> findByParentType(String type) {
         return this.repository.findByParentType(type).stream().map(this::convertToDto).collect(Collectors.toList());
