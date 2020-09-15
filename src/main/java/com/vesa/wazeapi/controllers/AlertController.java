@@ -9,6 +9,7 @@ import com.vesa.wazeapi.model.PushNotificationRequest;
 import com.vesa.wazeapi.services.AlertService;
 import com.vesa.wazeapi.services.AndroidPushNotificationsService;
 import com.vesa.wazeapi.services.PushNotificationService;
+import com.vesa.wazeapi.utils.NotificationServices;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -101,7 +102,7 @@ public class AlertController {
 
         JSONObject notification = new JSONObject();
         notification.put("title", Constants.FIREBASE_TITLE);
-        notification.put("body", "Happy Message!");
+        notification.put("body", NotificationServices.getMessage(alertDto.getType()));
 
         JSONObject data = new JSONObject();
 //        data.put("Key-1", "JSA Data 1");
