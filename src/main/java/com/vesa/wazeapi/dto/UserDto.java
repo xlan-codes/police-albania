@@ -14,6 +14,16 @@ public class UserDto extends BaseDto {
 
     private String password;
 
+    private boolean isAdminUser;
+
+    public boolean isAdminUser() {
+        return isAdminUser;
+    }
+
+    public void setAdminUser(boolean adminUser) {
+        isAdminUser = adminUser;
+    }
+
     public String getAddress() {
         return this.address;
     }
