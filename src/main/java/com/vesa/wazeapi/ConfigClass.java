@@ -91,7 +91,7 @@ public class ConfigClass extends WebSecurityConfigurerAdapter {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTION")
                         .allowedHeaders("*")
                         .allowedOrigins("http://localhost:4200");
             }
