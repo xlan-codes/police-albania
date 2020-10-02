@@ -5,9 +5,11 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.vesa.wazeapi.Constants;
 import com.vesa.wazeapi.dto.AlertDto;
+import com.vesa.wazeapi.dto.NotificationDto;
 import com.vesa.wazeapi.model.PushNotificationRequest;
 import com.vesa.wazeapi.services.AlertService;
 import com.vesa.wazeapi.services.AndroidPushNotificationsService;
+import com.vesa.wazeapi.services.NotificationService;
 import com.vesa.wazeapi.services.PushNotificationService;
 import com.vesa.wazeapi.utils.NotificationServices;
 import org.json.JSONObject;
@@ -33,6 +35,9 @@ public class AlertController {
 
     @Autowired
     private PushNotificationService pushNotificationService;
+
+    @Autowired
+    NotificationService notificationService;
 
     @Autowired
     AlertService alertService;
@@ -116,13 +121,24 @@ public class AlertController {
         CompletableFuture<String> pushNotification = androidPushNotificationsService.send(request);
         CompletableFuture.allOf(pushNotification).join();
 
+        NotificationDto notificationDto = new NotificationDto();
+
         try {
             String firebaseResponse = pushNotification.get();
+
+            notificationDto.setTitle(Constants.FIREBASE_TITLE);
+            notificationDto.setBody(NotificationServices.getMessage(alertDto.getType()));
+            notificationDto.setData("{location: \"" + alertDto.lat + "," + alertDto.lng + "\"}");
+            notificationDto.setMessageId(firebaseResponse);
+
         } catch (InterruptedException e) {
+            notificationDto.setMessageId(null);
             e.printStackTrace();
         } catch (ExecutionException e) {
+            notificationDto.setMessageId(null);
             e.printStackTrace();
         }
+        this.notificationService.save(notificationDto);
 
         return alertDto;
     }

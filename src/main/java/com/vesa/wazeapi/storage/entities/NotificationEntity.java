@@ -14,6 +14,8 @@ public class NotificationEntity extends BaseEntity{
 
     public String fcmId;
 
+    public String messageId;
+
     public String getTitle() {
         return title;
     }
@@ -52,5 +54,13 @@ public class NotificationEntity extends BaseEntity{
 
     public void setFcmId(String fcmId) {
         this.fcmId = fcmId;
+    }
+
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
     }
 }

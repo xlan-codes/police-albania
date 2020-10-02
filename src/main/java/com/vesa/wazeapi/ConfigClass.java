@@ -2,6 +2,7 @@ package com.vesa.wazeapi;
 
 import com.vesa.wazeapi.filters.JwtFilter;
 import com.vesa.wazeapi.services.AlertService;
+import com.vesa.wazeapi.services.NotificationService;
 import com.vesa.wazeapi.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class ConfigClass extends WebSecurityConfigurerAdapter {
     @Bean
     public UserService getUserService(){
         return new UserService();
+    }
+
+    @Bean
+    public NotificationService getNotificationService(){
+        return new NotificationService();
     }
 
     @Bean

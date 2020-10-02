@@ -33,6 +33,10 @@ public class NotificationService extends BaseService {
         return this.repository.getNotificationEntityByFcmId(fcmId).stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    public List<NotificationDto> findByMessageId(String messageId) {
+        return this.repository.getNotificationEntityByMessageId(messageId).stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
     public NotificationDto findOne(String id) {
         NotificationEntity entity = this.repository.findById(id).get();
         return entity == null ? null : this.convertToDto(entity);

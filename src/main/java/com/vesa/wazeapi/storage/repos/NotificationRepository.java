@@ -15,6 +15,8 @@ public interface NotificationRepository  extends MongoRepository<NotificationEnt
 
     List<NotificationEntity> getNotificationEntityByTitle(String fcmId);
 
+    List<NotificationEntity> getNotificationEntityByMessageId(String messageId);
+
     @Query("{'created' : { '$gte' : ?0 }}")
     List<NotificationEntity> findByDateTime(LocalDateTime created);
 

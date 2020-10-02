@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 public class NotificationController {
 
-    public static final String BASE_USER_CONTROLLER = "/admin-user";
+    public static final String BASE_USER_CONTROLLER = "/notification";
 
     @Autowired
     NotificationService notificationService;
@@ -28,13 +28,17 @@ public class NotificationController {
         return this.notificationService.findOne(id);
     }
 
+    @RequestMapping(value = NotificationController.BASE_USER_CONTROLLER + "/fail", method = RequestMethod.GET, produces = "application/json")
+    public List<NotificationDto> getFailNotification(){
+        return this.notificationService.findByMessageId(null);
+    }
 
     @RequestMapping(value = NotificationController.BASE_USER_CONTROLLER, method = RequestMethod.POST, produces = "application/json")
     public NotificationDto post(@RequestBody NotificationDto object) {
         return this.notificationService.save(object);
     }
 
-    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/getAlertByTypeAndDate", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = AlertController.BASE_ALERT_CONTROLLER + "/get-latest-notifications", method = RequestMethod.GET, produces = "application/json")
     public List<NotificationDto> getAlertByType(@RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> localDateTime) {
 
         LocalDateTime time = localDateTime.isPresent() ? localDateTime.get():null;
